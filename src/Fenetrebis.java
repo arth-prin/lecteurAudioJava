@@ -29,7 +29,7 @@ public class Fenetrebis extends JFrame{
         container.setLayout(new GridLayout(nbMorceaux,3));
         morceau1 = new Morceau("src/music/queen_love_of_my_life.mp3","Inconnu");
         morceau1.ajouteMorceau(container);
-        morceau2 = new Morceau("src/music/queen_love_of_my_life.mp3","Paganini");
+        morceau2 = new Morceau("src/music/marioKart.mp3","Paganini");
         morceau2.ajouteMorceau(container);
 
         this.setContentPane(north);
