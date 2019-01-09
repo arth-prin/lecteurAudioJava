@@ -9,7 +9,7 @@ public class Fenetrebis extends JFrame{
     private JPanel container = new JPanel();
     private JLabel label = new JLabel("Les titres");
     Morceau morceau1,morceau2;
-    private int nbMorceaux=2;
+    private int nbMorceaux=9;
     private LecteurCSV morceaux;
 
     public Fenetrebis() throws IOException {
@@ -24,7 +24,7 @@ public class Fenetrebis extends JFrame{
         label.setFont(police);
         label.setForeground(Color.blue);
         label.setHorizontalAlignment(JLabel.CENTER);
-        north.setLayout(new GridLayout(nbMorceaux+1,1));
+        north.setLayout(new GridLayout(2,1));
         north.add(label);
         north.add(container);
 
