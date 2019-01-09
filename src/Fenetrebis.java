@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.io.IOException;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -9,8 +10,10 @@ public class Fenetrebis extends JFrame{
     private JLabel label = new JLabel("Les titres");
     Morceau morceau1,morceau2;
     private int nbMorceaux=2;
+    private LecteurCSV morceaux;
 
-    public Fenetrebis(){
+    public Fenetrebis() throws IOException {
+        morceaux = new LecteurCSV("listeMorceaux.csv");
         this.setTitle("Mes musiques");
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -27,10 +30,14 @@ public class Fenetrebis extends JFrame{
 
         container.setBackground(Color.white);
         container.setLayout(new GridLayout(nbMorceaux,3));
-        morceau1 = new Morceau("src/music/queen_love_of_my_life.mp3","Inconnu");
-        morceau1.ajouteMorceau(container);
-        morceau2 = new Morceau("src/music/marioKart.mp3","Paganini");
-        morceau2.ajouteMorceau(container);
+//        morceau1 = new Morceau("music/queen_love_of_my_life.mp3","Inconnu");
+//        morceau1.ajouteMorceau(container);
+//        morceau2 = new Morceau("music/marioKart.mp3","Paganini");
+//        morceau2.ajouteMorceau(container);
+
+        for(Morceau morceau : morceaux.getMorceaux()){
+            morceau.ajouteMorceau(container);
+        }
 
         this.setContentPane(north);
         this.setVisible(true);

@@ -33,8 +33,8 @@ public class AudioMp3{
         catch (MediaException e)
         {e.printStackTrace();}
 
-        //player.setVolume(0.75);
-        player.play();
+        player.setVolume(0.75);
+        player.setAutoPlay(true);
         System.out.println("Je joue ...");
     }
 
