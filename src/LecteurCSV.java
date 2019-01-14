@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 public class LecteurCSV {
 
@@ -39,6 +37,7 @@ public class LecteurCSV {
             }
             index = 0;
             Morceau morceau = new Morceau(nomF,titre);
+            System.out.println(morceau);
             morceaux.add(morceau);
         }
 
@@ -48,6 +47,31 @@ public class LecteurCSV {
 
     public List<Morceau> getMorceaux(){
         return morceaux;
+    }
+
+    public void sortNomsMorceaux(){
+        for(Morceau m : morceaux){
+            System.out.println(m);
+        }
+        for(int i =0;i<morceaux.size();i++){
+            Morceau tmp = morceaux.get(i);
+            System.out.println(tmp);
+            int index=i;
+            for(int y=i+1;y<morceaux.size();y++){
+                String var = morceaux.get(y).nom;
+                if(morceaux.get(y).nom.compareTo(tmp.nom)<0){
+                    tmp = morceaux.get(y);
+                    index=y;
+                }
+            }
+            morceaux.set(index,morceaux.get(i));
+            morceaux.set(i,tmp);
+        }
+    }
+
+    public void sortNomsMorceauxR(){
+        sortNomsMorceaux();
+        Collections.reverse(morceaux);
     }
 
 }

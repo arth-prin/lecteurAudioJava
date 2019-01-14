@@ -30,7 +30,7 @@ public class Fenetrebis extends JFrame{
 
         container.setBackground(Color.white);
         container.setLayout(new GridLayout(nbMorceaux,3));
-
+        morceaux.sortNomsMorceauxR();
         for(Morceau morceau : morceaux.getMorceaux()){
             morceau.ajouteMorceau(container);
         }

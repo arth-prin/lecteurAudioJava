@@ -17,6 +17,9 @@ public class Morceau {
     private AudioMp3 audioMp3;
 
     public Morceau(String file, String nom){
+        this.nom=nom;
+        this.fichier=file;
+        this.auteur="Uknow";
         audioMp3 = new AudioMp3(file);
         texte = new JLabel(nom);
     }
@@ -53,5 +56,14 @@ public class Morceau {
             bouton2.setEnabled(false);
             audioMp3.stop();
         }
+    }
+
+    @Override
+    public String toString() {
+        return "Morceau{" +
+                "nom='" + nom + '\'' +
+                ", auteur='" + auteur + '\'' +
+                ", fichier='" + fichier + '\'' +
+                '}';
     }
 }
