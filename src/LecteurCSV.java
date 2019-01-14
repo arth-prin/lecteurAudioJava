@@ -32,7 +32,7 @@ public class LecteurCSV {
                 else if (index == 2)
                     titre=data;
                 else if (index == 3)
-                    nomF=data;
+                    nomF="./music/"+data;
                 else
                     System.out.println("invalid data::" + data);
                 index++;

@@ -13,7 +13,7 @@ public class Fenetrebis extends JFrame{
     private LecteurCSV morceaux;
 
     public Fenetrebis() throws IOException {
-        morceaux = new LecteurCSV("listeMorceaux.csv");
+        morceaux = new LecteurCSV("./music/listeMorceaux.csv");
         this.setTitle("Mes musiques");
         this.setSize(800, 600);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -30,10 +30,6 @@ public class Fenetrebis extends JFrame{
 
         container.setBackground(Color.white);
         container.setLayout(new GridLayout(nbMorceaux,3));
-//        morceau1 = new Morceau("music/queen_love_of_my_life.mp3","Inconnu");
-//        morceau1.ajouteMorceau(container);
-//        morceau2 = new Morceau("music/marioKart.mp3","Paganini");
-//        morceau2.ajouteMorceau(container);
 
         for(Morceau morceau : morceaux.getMorceaux()){
             morceau.ajouteMorceau(container);
