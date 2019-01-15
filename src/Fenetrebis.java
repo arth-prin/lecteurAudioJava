@@ -99,24 +99,28 @@ public class Fenetrebis extends JFrame{
     class BoutonTriAlbumListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             morceaux.sortNomsAlbum();
+            reloadMorceaux();
         }
     }
 
     class BoutonTriAlbumRListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             morceaux.sortNomsAlbumR();
+            reloadMorceaux();
         }
     }
 
     class BoutonTriArtiste implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             morceaux.sortNomsAuteur();
+            reloadMorceaux();
         }
     }
 
     class BoutonTriArtitesR implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             morceaux.sortNomsAuteurR();
+            reloadMorceaux();
         }
     }
 }
