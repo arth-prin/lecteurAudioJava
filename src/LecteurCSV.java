@@ -50,9 +50,6 @@ public class LecteurCSV {
     }
 
     public void sortNomsMorceaux(){
-        for(Morceau m : morceaux){
-            System.out.println(m);
-        }
         for(int i =0;i<morceaux.size();i++){
             Morceau tmp = morceaux.get(i);
             System.out.println(tmp);
@@ -66,17 +63,16 @@ public class LecteurCSV {
             morceaux.set(index,morceaux.get(i));
             morceaux.set(i,tmp);
         }
+        afficheMorceaux();
     }
 
     public void sortNomsMorceauxR(){
         sortNomsMorceaux();
         Collections.reverse(morceaux);
+        afficheMorceaux();
     }
 
     public void sortNomsAlbum(){
-        for(Morceau m : morceaux){
-            System.out.println(m);
-        }
         for(int i =0;i<morceaux.size();i++){
             Morceau tmp = morceaux.get(i);
             System.out.println(tmp);
@@ -98,9 +94,6 @@ public class LecteurCSV {
     }
 
     public void sortNomsAuteur(){
-        for(Morceau m : morceaux){
-            System.out.println(m);
-        }
         for(int i =0;i<morceaux.size();i++){
             Morceau tmp = morceaux.get(i);
             System.out.println(tmp);
@@ -119,6 +112,12 @@ public class LecteurCSV {
     public void sortNomsAuteurR(){
         sortNomsMorceaux();
         Collections.reverse(morceaux);
+    }
+
+    public void afficheMorceaux(){
+        for(Morceau m : morceaux){
+            System.out.println(m);
+        }
     }
 }
 

@@ -41,8 +41,6 @@ public class Fenetrebis extends JFrame{
         container.setLayout(new GridLayout(nbMorceaux,3));
         bouton.setLayout(new GridLayout(1,6));
 
-        morceaux.sortNomsAuteur();
-
         for(Morceau morceau : morceaux.getMorceaux()){
             morceau.ajouteMorceau(container);
         }
@@ -75,15 +73,26 @@ public class Fenetrebis extends JFrame{
         this.setVisible(true);
     }
 
+    public void reloadMorceaux(){
+        container.removeAll();
+        container.revalidate();
+        container.repaint();
+        for(Morceau morceau : morceaux.getMorceaux()){
+            morceau.ajouteMorceau(container);
+        }
+    }
+
     class BoutonTriTitreListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             morceaux.sortNomsMorceaux();
+            reloadMorceaux();
         }
     }
 
     class BoutonTriTitreRListener implements ActionListener {
         public void actionPerformed(ActionEvent e) {
             morceaux.sortNomsMorceauxR();
+            reloadMorceaux();
         }
     }
 
