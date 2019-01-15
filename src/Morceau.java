@@ -8,6 +8,7 @@ public class Morceau {
     String nom;
     String auteur;
     String fichier;
+    String album;
 
     private JLabel texte;
     private JButton bouton = new JButton("Go");
@@ -16,10 +17,11 @@ public class Morceau {
 
     private AudioMp3 audioMp3;
 
-    public Morceau(String file, String nom){
+    public Morceau(String file, String nom, String album, String auteur){
         this.nom=nom;
         this.fichier=file;
-        this.auteur="Uknow";
+        this.auteur=auteur;
+        this.album=album;
         audioMp3 = new AudioMp3(file);
         texte = new JLabel(nom);
     }

@@ -1,16 +1,24 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.IOException;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 
 public class Fenetrebis extends JFrame{
 
     private JPanel container = new JPanel();
     private JLabel label = new JLabel("Les titres");
-    Morceau morceau1,morceau2;
+    private JLabel bouton = new JLabel();
     private int nbMorceaux=9;
     private LecteurCSV morceaux;
+    private JButton btnTriTitre = new JButton("Trier par Titres");
+    private JButton btnTriTitreR = new JButton("Trier par Titres R");
+    private JButton btnTriAlbum = new JButton("Trier par Album");
+    private JButton btnTriAlbumR = new JButton("Trier par Album R");
+    private JButton btnTriAuteur = new JButton("Trier par Artites");
+    private JButton btnTriAuteurR = new JButton("Trier par Artites R");
+
+
 
     public Fenetrebis() throws IOException {
         morceaux = new LecteurCSV("./music/listeMorceaux.csv");
@@ -24,20 +32,82 @@ public class Fenetrebis extends JFrame{
         label.setFont(police);
         label.setForeground(Color.blue);
         label.setHorizontalAlignment(JLabel.CENTER);
-        north.setLayout(new GridLayout(2,1));
+        north.setLayout(new GridLayout(3,1));
         north.add(label);
+        north.add(bouton);
         north.add(container);
 
         container.setBackground(Color.white);
         container.setLayout(new GridLayout(nbMorceaux,3));
-        morceaux.sortNomsMorceauxR();
+        bouton.setLayout(new GridLayout(1,6));
+
+        morceaux.sortNomsAuteur();
+
         for(Morceau morceau : morceaux.getMorceaux()){
             morceau.ajouteMorceau(container);
         }
+
+        btnTriTitre.addActionListener(new BoutonTriTitreListener());
+        btnTriTitre.setEnabled(true);
+        bouton.add(btnTriTitre);
+
+        btnTriTitreR.addActionListener(new BoutonTriTitreRListener());
+        btnTriTitreR.setEnabled(true);
+        bouton.add(btnTriTitreR);
+
+        btnTriAlbum.addActionListener(new BoutonTriAlbumListener());
+        btnTriAlbum.setEnabled(true);
+        bouton.add(btnTriAlbum);
+
+        btnTriAlbumR.addActionListener(new BoutonTriAlbumRListener());
+        btnTriAlbumR.setEnabled(true);
+        bouton.add(btnTriAlbumR);
+
+        btnTriAuteur.addActionListener(new BoutonTriAlbumRListener());
+        btnTriAuteur.setEnabled(true);
+        bouton.add(btnTriAuteur);
+
+        btnTriAuteurR.addActionListener(new BoutonTriAlbumRListener());
+        btnTriAuteurR.setEnabled(true);
+        bouton.add(btnTriAuteurR);
 
         this.setContentPane(north);
         this.setVisible(true);
     }
 
+    class BoutonTriTitreListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            morceaux.sortNomsMorceaux();
+        }
+    }
 
+    class BoutonTriTitreRListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            morceaux.sortNomsMorceauxR();
+        }
+    }
+
+    class BoutonTriAlbumListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            morceaux.sortNomsAlbum();
+        }
+    }
+
+    class BoutonTriAlbumRListener implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            morceaux.sortNomsAlbumR();
+        }
+    }
+
+    class BoutonTriArtiste implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            morceaux.sortNomsAuteur();
+        }
+    }
+
+    class BoutonTriArtitesR implements ActionListener {
+        public void actionPerformed(ActionEvent e) {
+            morceaux.sortNomsAuteurR();
+        }
+    }
 }

@@ -36,7 +36,7 @@ public class LecteurCSV {
                 index++;
             }
             index = 0;
-            Morceau morceau = new Morceau(nomF,titre);
+            Morceau morceau = new Morceau(nomF,titre,album,nomA);
             System.out.println(morceau);
             morceaux.add(morceau);
         }
@@ -58,7 +58,6 @@ public class LecteurCSV {
             System.out.println(tmp);
             int index=i;
             for(int y=i+1;y<morceaux.size();y++){
-                String var = morceaux.get(y).nom;
                 if(morceaux.get(y).nom.compareTo(tmp.nom)<0){
                     tmp = morceaux.get(y);
                     index=y;
@@ -74,5 +73,52 @@ public class LecteurCSV {
         Collections.reverse(morceaux);
     }
 
+    public void sortNomsAlbum(){
+        for(Morceau m : morceaux){
+            System.out.println(m);
+        }
+        for(int i =0;i<morceaux.size();i++){
+            Morceau tmp = morceaux.get(i);
+            System.out.println(tmp);
+            int index=i;
+            for(int y=i+1;y<morceaux.size();y++){
+                if(morceaux.get(y).album.compareTo(tmp.album)<0){
+                    tmp = morceaux.get(y);
+                    index=y;
+                }
+            }
+            morceaux.set(index,morceaux.get(i));
+            morceaux.set(i,tmp);
+        }
+    }
+
+    public void sortNomsAlbumR(){
+        sortNomsMorceaux();
+        Collections.reverse(morceaux);
+    }
+
+    public void sortNomsAuteur(){
+        for(Morceau m : morceaux){
+            System.out.println(m);
+        }
+        for(int i =0;i<morceaux.size();i++){
+            Morceau tmp = morceaux.get(i);
+            System.out.println(tmp);
+            int index=i;
+            for(int y=i+1;y<morceaux.size();y++){
+                if(morceaux.get(y).auteur.compareTo(tmp.auteur)<0){
+                    tmp = morceaux.get(y);
+                    index=y;
+                }
+            }
+            morceaux.set(index,morceaux.get(i));
+            morceaux.set(i,tmp);
+        }
+    }
+
+    public void sortNomsAuteurR(){
+        sortNomsMorceaux();
+        Collections.reverse(morceaux);
+    }
 }
 
